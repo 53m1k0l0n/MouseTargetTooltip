@@ -17,10 +17,10 @@ namespace MouseTargetTooltip
         private const string CommandName = "/mtar";
 
         public MouseTooltipPlugin(
-            [RequiredVersion("1.0")] DalamudPluginInterface? pluginInterface,
-            [RequiredVersion("1.0")] ICommandManager? commandManager,
-            [RequiredVersion("1.0")] IClientState? clientState,
-            [RequiredVersion("1.0")] ITargetManager? targetManager)
+            IDalamudPluginInterface? pluginInterface,
+            ICommandManager? commandManager,
+            IClientState? clientState,
+            ITargetManager? targetManager)
         {
             Pi = pluginInterface;
             Cm = commandManager;
@@ -66,7 +66,7 @@ namespace MouseTargetTooltip
         {
             if (Ui != null) Ui.SettingsVisible = true;
         }
-        public static DalamudPluginInterface? Pi { get; private set; }
+        public static IDalamudPluginInterface? Pi { get; private set; }
         public static ICommandManager? Cm { get; private set; }
         public static IClientState? Cs { get; private set; }
         public static PluginUi? Ui { get; private set; }

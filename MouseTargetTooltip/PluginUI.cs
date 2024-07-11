@@ -15,8 +15,8 @@ namespace MouseTargetTooltip
     {
         internal readonly Configuration Configuration;
 
-        private GameObject? _mouseTarget;
-        private GameObject? _lastKnownActor;
+        private IGameObject? _mouseTarget;
+        private IGameObject? _lastKnownActor;
         private float _alpha;
         private Stopwatch _fadeTimer;
         private Stopwatch _uiSpeedTimer;
@@ -47,7 +47,7 @@ namespace MouseTargetTooltip
         {
         }
 
-        public void Draw(GameObject? mouseOverTarget)
+        public void Draw(IGameObject? mouseOverTarget)
         {
             _mouseTarget = mouseOverTarget;
 
@@ -99,10 +99,10 @@ namespace MouseTargetTooltip
             switch (_lastKnownActor.ObjectKind)
             {
                 case ObjectKind.BattleNpc:
-                    BattleNpcWindow.Draw(_lastKnownActor as BattleNpc, _alpha, Configuration);
+                    BattleNpcWindow.Draw(_lastKnownActor as IBattleNpc, _alpha, Configuration);
                     break;
                 case ObjectKind.Player:
-                    PlayerWindow.Draw(_lastKnownActor as PlayerCharacter, _alpha, Configuration);
+                    PlayerWindow.Draw(_lastKnownActor as IPlayerCharacter, _alpha, Configuration);
                     break;
                 default:
                     DefaultWindow.Draw(_lastKnownActor, _alpha);
